@@ -436,40 +436,40 @@
             <div class="qa-container">
                 <!-- Quick Question Buttons -->
                 <div class="qa-quick-questions">
-                    <p class="quick-label">Popular Questions:</p>
+                    <p class="quick-label">Try asking:</p>
                     <div class="quick-buttons">
-                        <button class="quick-btn" data-question="What are the current home prices in Bellevue?">Bellevue Home Prices</button>
-                        <button class="quick-btn" data-question="What is the home buying process in Washington state?">Buying Process</button>
-                        <button class="quick-btn" data-question="How do I sell my home for the best price?">Selling Tips</button>
-                        <button class="quick-btn" data-question="What are current mortgage rates?">Mortgage Rates</button>
-                        <button class="quick-btn" data-question="What should I know about the Seattle real estate market?">Seattle Market</button>
-                        <button class="quick-btn" data-question="What is NMLS and why does it matter for my mortgage?">NMLS Info</button>
-                        <button class="quick-btn" data-question="What are closing costs when buying a home?">Closing Costs</button>
-                        <button class="quick-btn" data-question="Do I need a home inspection?">Home Inspection</button>
+                        <button class="quick-btn" data-question="Show me 3 bedroom homes in Bellevue under $1.5M">🔍 Homes in Bellevue</button>
+                        <button class="quick-btn" data-question="Condos for sale in Kirkland under $800K">🏢 Kirkland Condos</button>
+                        <button class="quick-btn" data-question="Recently sold homes in Redmond over $1M">📊 Redmond Sold Homes</button>
+                        <button class="quick-btn" data-question="How do I verify a mortgage lender on NMLS?">🔒 Verify Lender (NMLS)</button>
+                        <button class="quick-btn" data-question="What are current mortgage rates?">💰 Mortgage Rates</button>
+                        <button class="quick-btn" data-question="What is the home buying process?">📋 Buying Process</button>
+                        <button class="quick-btn" data-question="Open houses in Bellevue">🏠 Open Houses</button>
+                        <button class="quick-btn" data-question="What's the Seattle housing market like?">📈 Market Trends</button>
                     </div>
                 </div>
 
                 <!-- Chat Interface -->
                 <div class="chat-container" id="chatContainer">
                     <div class="chat-messages" id="chatMessages">
-                        <div class="chat-message bot">
-                            <div class="chat-avatar"><i class="fas fa-user-tie"></i></div>
-                            <div class="chat-bubble">
-                                <p>Hi there! 👋 I'm Tracy's virtual assistant. I can help answer your questions about:</p>
+                        <div class="chat-message assistant">
+                            <div class="message-avatar"><i class="fas fa-home"></i></div>
+                            <div class="message-bubble">
+                                <p>Hi there! 👋 I'm Tracy's virtual assistant. I can help you:</p>
                                 <ul>
-                                    <li>🏠 Buying or selling a home in Seattle area</li>
-                                    <li>📊 Current market trends & pricing</li>
-                                    <li>💰 Mortgage & financing information</li>
-                                    <li>📋 The real estate process</li>
-                                    <li>🔍 Information from Zillow, Redfin, and NMLS</li>
+                                    <li>🔍 <strong>Search listings:</strong> <em>"3 bed homes in Bellevue under $1.5M"</em></li>
+                                    <li>📊 <strong>View sold homes:</strong> <em>"Recently sold in Kirkland"</em></li>
+                                    <li>🔒 <strong>Verify lenders:</strong> <em>"Check NMLS #12345"</em></li>
+                                    <li>💰 <strong>Mortgage info:</strong> <em>"Current mortgage rates"</em></li>
+                                    <li>📋 <strong>Process guides:</strong> <em>"How do I buy a home?"</em></li>
                                 </ul>
-                                <p>Ask me anything, or click a quick question above!</p>
+                                <p>I search <strong>Redfin</strong>, <strong>Zillow</strong>, and <strong>NMLS</strong> in real time. Try a question above or type your own!</p>
                             </div>
                         </div>
                     </div>
                     <div class="chat-input-area">
-                        <input type="text" id="chatInput" class="chat-input" placeholder="Type your question here..." autocomplete="off">
-                        <button id="chatSend" class="chat-send-btn" aria-label="Send message">
+                        <input type="text" id="chatInput" class="chat-input" placeholder="e.g. Show me 3 bed homes in Bellevue under $1M..." autocomplete="off">
+                        <button id="sendMessage" class="chat-send-btn" aria-label="Send message">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
@@ -522,6 +522,38 @@
                     <h3>Mortgage Rate Tracker</h3>
                     <p>Compare current mortgage rates, use payment calculators, and understand your financing options.</p>
                     <span class="resource-link">View Rates <i class="fas fa-external-link-alt"></i></span>
+                </a>
+                <a href="https://mortgage.nationwidelicensingsystem.org/news/Pages/default.aspx" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon nmls-color">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3>NMLS News & Updates</h3>
+                    <p>Stay current with the latest mortgage industry news, policy changes, and regulatory announcements from NMLS.</p>
+                    <span class="resource-link">Read NMLS News <i class="fas fa-external-link-alt"></i></span>
+                </a>
+                <a href="https://mortgage.nationwidelicensingsystem.org/profreq/Pages/default.aspx" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon nmls-color">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>NMLS Education & Licensing</h3>
+                    <p>Professional requirements, continuing education, and licensing information for mortgage professionals.</p>
+                    <span class="resource-link">Learn More <i class="fas fa-external-link-alt"></i></span>
+                </a>
+                <a href="https://mortgage.nationwidelicensingsystem.org/slr/Pages/DynamicLicenses.aspx?state=WA" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon redfin-color">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>WA State Licenses</h3>
+                    <p>View Washington state mortgage licensing requirements, authorized lenders, and state regulatory information.</p>
+                    <span class="resource-link">WA Licenses <i class="fas fa-external-link-alt"></i></span>
+                </a>
+                <a href="https://mortgage.nationwidelicensingsystem.org/consumer/Pages/default.aspx" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon zillow-color">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Consumer Resource Center</h3>
+                    <p>NMLS consumer guides, how to protect yourself from mortgage fraud, and homebuyer education resources.</p>
+                    <span class="resource-link">Consumer Guide <i class="fas fa-external-link-alt"></i></span>
                 </a>
             </div>
         </div>
