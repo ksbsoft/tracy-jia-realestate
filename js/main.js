@@ -8,6 +8,83 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ============================================
+    // PWA SERVICE WORKER REGISTRATION
+    // ============================================
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then((registration) => {
+                    console.log('[PWA] Service Worker registered, scope:', registration.scope);
+
+                    // Check for updates periodically
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'activated') {
+                                console.log('[PWA] New content available, refresh for updates.');
+                            }
+                        });
+                    });
+                })
+                .catch((error) => {
+                    console.log('[PWA] Service Worker registration failed:', error);
+                });
+        });
+    }
+
+    // ============================================
+    // PWA INSTALL PROMPT (Android / Desktop Chrome)
+    // ============================================
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // Show a custom install button if desired
+        const installBanner = document.getElementById('installBanner');
+        if (installBanner) {
+            installBanner.style.display = 'flex';
+            installBanner.querySelector('.install-btn').addEventListener('click', () => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('[PWA] User accepted install');
+                    }
+                    deferredPrompt = null;
+                    installBanner.style.display = 'none';
+                });
+            });
+        }
+    });
+
+    // Detect if running as installed PWA
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+        document.body.classList.add('pwa-standalone');
+        console.log('[PWA] Running in standalone mode');
+    }
+
+    // ============================================
+    // iOS SAFARI INSTALL PROMPT
+    // ============================================
+    const isIos = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
+    const isInStandaloneMode = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+    const iosPromptDismissed = localStorage.getItem('iosPromptDismissed');
+
+    if (isIos && !isInStandaloneMode && !iosPromptDismissed) {
+        // Show iOS install prompt after a short delay
+        setTimeout(() => {
+            const iosPrompt = document.getElementById('iosInstallPrompt');
+            if (iosPrompt) {
+                iosPrompt.style.display = 'block';
+                // Auto-hide after 15 seconds
+                setTimeout(() => {
+                    iosPrompt.style.display = 'none';
+                }, 15000);
+            }
+        }, 3000);
+    }
+
+    // ============================================
     // NAVBAR
     // ============================================
     const navbar = document.getElementById('navbar');

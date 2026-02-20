@@ -2,10 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Tracy Jia | Real Estate Broker | Greater Seattle Area</title>
     <meta name="description" content="Tracy Jia - Experienced Real Estate Broker at Best Choice Realty serving the Greater Seattle area. Specializing in buying, selling, and property management. English & Mandarin speaking.">
     <meta name="keywords" content="Tracy Jia, real estate, Seattle, Bellevue, Kirkland, Redmond, broker, buy home, sell home, Best Choice Realty">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1a4b6e">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Apple iOS PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Tracy Jia RE">
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128x128.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512x512.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/icon-96x96.png">
+
+    <!-- Apple Splash Screen (iPhone and iPad) -->
+    <meta name="apple-mobile-web-app-title" content="Tracy Jia">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,6 +44,29 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+    <!-- PWA Install Banner (shown on Android/Desktop) -->
+    <div class="install-banner" id="installBanner" style="display:none;">
+        <div class="install-banner-content">
+            <img src="icons/icon-96x96.png" alt="App Icon" class="install-banner-icon">
+            <div class="install-banner-text">
+                <strong>Tracy Jia Real Estate</strong>
+                <span>Install the app for the best experience</span>
+            </div>
+            <button class="install-btn btn btn-primary">Install</button>
+            <button class="install-dismiss" onclick="this.parentElement.parentElement.style.display='none'" aria-label="Dismiss">&times;</button>
+        </div>
+    </div>
+
+    <!-- iOS Install Instructions (shown in Safari on iOS) -->
+    <div class="ios-install-prompt" id="iosInstallPrompt" style="display:none;">
+        <div class="ios-install-content">
+            <button class="ios-install-close" onclick="this.parentElement.parentElement.style.display='none';localStorage.setItem('iosPromptDismissed','1')" aria-label="Close">&times;</button>
+            <img src="icons/icon-96x96.png" alt="App Icon" class="ios-install-icon">
+            <p><strong>Install this App</strong></p>
+            <p>Tap <span class="ios-share-icon"><i class="fas fa-share-square"></i></span> then <strong>"Add to Home Screen"</strong></p>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">

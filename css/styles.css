@@ -1937,3 +1937,188 @@ h1, h2, h3, h4, h5 {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+/* ============================================
+   PWA INSTALL BANNERS & STANDALONE MODE
+   ============================================ */
+
+/* Android/Desktop install banner */
+.install-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    background: var(--bg);
+    border-top: 2px solid var(--accent);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    padding: 12px 16px;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.install-banner-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.install-banner-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.install-banner-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.install-banner-text strong {
+    font-size: 0.95rem;
+    color: var(--primary-dark);
+}
+
+.install-banner-text span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.install-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.install-dismiss {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px 8px;
+    flex-shrink: 0;
+}
+
+/* iOS install prompt */
+.ios-install-prompt {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.ios-install-content {
+    background: var(--bg);
+    border-radius: var(--radius-lg);
+    padding: 24px 32px;
+    text-align: center;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border);
+    position: relative;
+    min-width: 280px;
+}
+
+.ios-install-content::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 16px;
+    height: 16px;
+    background: var(--bg);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.ios-install-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.ios-install-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+}
+
+.ios-install-content p {
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.ios-share-icon {
+    color: var(--primary);
+    font-size: 1.1em;
+}
+
+/* Standalone mode adjustments (when installed as PWA) */
+.pwa-standalone .navbar {
+    padding-top: env(safe-area-inset-top, 0);
+}
+
+.pwa-standalone .hero {
+    padding-top: calc(72px + env(safe-area-inset-top, 0));
+}
+
+.pwa-standalone .footer-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Safe area insets for notched iPhones */
+@supports (padding: env(safe-area-inset-top)) {
+    .pwa-standalone .navbar {
+        padding-top: env(safe-area-inset-top);
+    }
+
+    .pwa-standalone .footer {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .pwa-standalone .floating-chat {
+        bottom: calc(24px + env(safe-area-inset-bottom));
+    }
+
+    .pwa-standalone .back-to-top {
+        bottom: calc(96px + env(safe-area-inset-bottom));
+    }
+
+    .pwa-standalone .install-banner {
+        padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    }
+
+    .pwa-standalone .ios-install-prompt {
+        bottom: calc(20px + env(safe-area-inset-bottom));
+    }
+}
